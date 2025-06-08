@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventylex - Registration</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&family=DM+Sans&family=Varela&family=Roboto&family=Poppins:wght@300;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            color: #eee;
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-strip {
+            background: #000000;
+            border-bottom: 2px solid #d10000;
+            padding: 28px 0 18px 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header-strip .logo {
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 700;
+            color: #d10000;
+            font-size: 48px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 12px rgba(209, 0, 0, 0.10);
+        }
+
+        .register-container {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background: linear-gradient(180deg, #000000 60%, #480000 100%);
+            min-height: 80vh;
+            animation: fadeInBg 1.2s cubic-bezier(.4, 1.4, .7, 1);
+            padding-top: 60px;
+            /* gap from top strip */
+            padding-bottom: 60px;
+            /* gap from footer */
+        }
+
+        @keyframes fadeInBg {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .register-box {
+            background: #1e1e1e;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px 0 rgba(209, 0, 0, 0.10), 0 1.5px 8px 0 rgba(0, 0, 0, 0.10);
+            border: 2px solid #d10000;
+            padding: 40px 32px 32px 32px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardFadeIn 0.9s cubic-bezier(.4, 1.4, .7, 1) 0.2s forwards;
+        }
+
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .register-title {
+            font-family: 'Saira Condensed', sans-serif;
+            font-size: 2.2em;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .register-box label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 4px;
+            font-weight: bold;
+            letter-spacing: 0.2px;
+        }
+
+        .register-box input,
+        .register-box select {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            padding: 10px 12px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: #222;
+            color: #eee;
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .register-box input:focus,
+        .register-box select:focus {
+            border-color: #d10000;
+        }
+
+        .register-btn {
+            margin-top: 10px;
+            padding: 12px 0;
+            background-color: #d10000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+            box-shadow: 0 2px 10px 0 rgba(209, 0, 0, 0.10);
+            letter-spacing: 0.5px;
+        }
+
+        .register-btn:hover {
+            background-color: #ff3333;
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 18px 0 rgba(209, 0, 0, 0.18);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .login-link a {
+            color: #d10000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .login-link a:hover {
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .divider {
+            text-align: center;
+            color: #888;
+            margin: 12px 0 0 0;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .divider:before,
+        .divider:after {
+            content: "";
+            display: inline-block;
+            width: 30%;
+            height: 1px;
+            background: #333;
+            vertical-align: middle;
+            margin: 0 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px 0 10px 0;
+            background-color: #1a1a1a;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10pt;
+            color: #777;
+            border-top: 1px solid #d10000;
+            letter-spacing: 0.5px;
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .custom-select {
+            position: relative;
+            user-select: none;
+            width: 100%;
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #222;
+            color: #eee;
+            padding: 10px 12px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .custom-select.open .custom-select-trigger,
+        .custom-select-trigger:focus {
+            border-color: #d10000;
+        }
+
+        .custom-options {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 110%;
+            background: #222;
+            border: 1px solid #d10000;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 4px 18px 0 rgba(209, 0, 0, 0.10);
+            z-index: 20;
+            max-height: 180px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.18s;
+        }
+
+        .custom-select.open .custom-options {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .custom-option {
+            padding: 10px 12px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            color: #eee;
+            background: #222;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .custom-option.selected {
+            background: #d10000;
+            color: #fff;
+        }
+
+        .custom-option:hover,
+        .custom-option:focus {
+            background: #d10000;
+            color: #fff;
+        }
+
+        .custom-select-arrow {
+            margin-left: 8px;
+            border: solid #eee;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(45deg);
+            transition: border-color 0.2s;
+        }
+
+        .custom-select.open .custom-select-arrow {
+            border-color: #d10000;
+        }
+
+        @media (max-width: 500px) {
+            .register-box {
+                padding: 28px 10px 18px 10px;
+                max-width: 98vw;
+            }
+
+            .header-strip .logo {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-strip">
+        <span class="logo">Eventylex</span>
+    </div>
+    <div class="register-container">
+        <form class="register-box" autocomplete="on">
+            <div class="register-title">Create Your Account</div>
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required
+                autocomplete="name" />
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required
+                autocomplete="username" />
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
+                pattern="[0-9]{10,15}" autocomplete="tel" />
+
+            <label for="gender">Gender</label>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" id="genderCustomSelect" tabindex="0">
+                    <div class="custom-select-trigger" id="genderTrigger">
+                        <span id="genderSelectedText">Select your gender</span>
+                        <span class="custom-select-arrow"></span>
+                    </div>
+                    <div class="custom-options" id="genderOptions">
+                        <div class="custom-option" data-value="" tabindex="0" style="color:#888;">Select your gender
+                        </div>
+                        <div class="custom-option" data-value="male" tabindex="0">Male</div>
+                        <div class="custom-option" data-value="female" tabindex="0">Female</div>
+                        <div class="custom-option" data-value="other" tabindex="0">Other</div>
+                        <div class="custom-option" data-value="prefer_not_say" tabindex="0">Prefer not to say</div>
+                    </div>
+                </div>
+                <input type="hidden" id="gender" name="gender" required>
+            </div>
+
+            <label for="college">College/Institute</label>
+            <input type="text" id="college" name="college" placeholder="Enter your college or institute" required />
+
+            <label for="role">Role</label>
+            <div class="custom-select-wrapper">
+                <div class="custom-select" id="roleCustomSelect" tabindex="0">
+                    <div class="custom-select-trigger" id="roleTrigger">
+                        <span id="roleSelectedText">Select your role</span>
+                        <span class="custom-select-arrow"></span>
+                    </div>
+                    <div class="custom-options" id="roleOptions">
+                        <div class="custom-option" data-value="" tabindex="0" style="color:#888;">Select your role</div>
+                        <div class="custom-option" data-value="student" tabindex="0">Student</div>
+                        <div class="custom-option" data-value="faculty" tabindex="0">Faculty</div>
+                        <div class="custom-option" data-value="organizer" tabindex="0">Organizer</div>
+                    </div>
+                </div>
+                <input type="hidden" id="role" name="role" required>
+            </div>
+
+            <label for="password">Password</label>
+            <div style="position:relative;">
+                <input type="password" id="password" name="password" placeholder="Create a password" required
+                    autocomplete="new-password" style="padding-right:30px; padding-left:24px;" />
+                <button type="button" id="togglePassword" aria-label="Show password"
+                    style="position:absolute;top:50%;right:4px;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:0;">
+                    <svg id="eyeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d10000"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+                        <circle cx="12" cy="12" r="2.5"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <label for="confirm-password">Confirm Password</label>
+            <div style="position:relative;">
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
+                    required autocomplete="new-password" style="padding-right:30px; padding-left:24px;" />
+                <button type="button" id="toggleConfirmPassword" aria-label="Show password"
+                    style="position:absolute;top:50%;right:4px;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:0;">
+                    <svg id="eyeIconConfirm" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d10000"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+                        <circle cx="12" cy="12" r="2.5"></circle>
+                    </svg>
+                </button>
+            </div>
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <div class="divider">or</div>
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+        </form>
+    </div>
+    <footer>
+        &copy; 2025 Eventylex. All rights reserved.
+    </footer>
+    <script>
+        // Password show/hide toggle for password
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            if (type === 'text') {
+                eyeIcon.innerHTML = `<ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+          <circle cx="12" cy="12" r="2.5"></circle>
+          <line x1="4" y1="20" x2="20" y2="4" stroke="#d10000" stroke-width="2"></line>`;
+                togglePassword.setAttribute('aria-label', 'Hide password');
+            } else {
+                eyeIcon.innerHTML = `<ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+          <circle cx="12" cy="12" r="2.5"></circle>`;
+                togglePassword.setAttribute('aria-label', 'Show password');
+            }
+        });
+
+        // Password show/hide toggle for confirm password
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+        const eyeIconConfirm = document.getElementById('eyeIconConfirm');
+        toggleConfirmPassword.addEventListener('click', function () {
+            const type = confirmPasswordInput.type === 'password' ? 'text' : 'password';
+            confirmPasswordInput.type = type;
+            if (type === 'text') {
+                eyeIconConfirm.innerHTML = `<ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+          <circle cx="12" cy="12" r="2.5"></circle>
+          <line x1="4" y1="20" x2="20" y2="4" stroke="#d10000" stroke-width="2"></line>`;
+                toggleConfirmPassword.setAttribute('aria-label', 'Hide password');
+            } else {
+                eyeIconConfirm.innerHTML = `<ellipse cx="12" cy="12" rx="8" ry="5"></ellipse>
+          <circle cx="12" cy="12" r="2.5"></circle>`;
+                toggleConfirmPassword.setAttribute('aria-label', 'Show password');
+            }
+        });
+
+        // Custom Select for Gender
+        (function () {
+            const customSelect = document.getElementById('genderCustomSelect');
+            const trigger = document.getElementById('genderTrigger');
+            const options = document.getElementById('genderOptions');
+            const hiddenInput = document.getElementById('gender');
+            const selectedText = document.getElementById('genderSelectedText');
+            const optionDivs = options.querySelectorAll('.custom-option');
+
+            // Open/close dropdown
+            trigger.addEventListener('click', function (e) {
+                customSelect.classList.toggle('open');
+            });
+
+            // Option click
+            optionDivs.forEach(option => {
+                option.addEventListener('click', function (e) {
+                    optionDivs.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    let val = this.getAttribute('data-value');
+                    let text = this.textContent;
+                    selectedText.textContent = text;
+                    hiddenInput.value = val;
+                    customSelect.classList.remove('open');
+                });
+                option.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Close on outside click
+            document.addEventListener('mousedown', function (e) {
+                if (!customSelect.contains(e.target)) {
+                    customSelect.classList.remove('open');
+                }
+            });
+
+            // Keyboard navigation
+            customSelect.addEventListener('keydown', function (e) {
+                const open = customSelect.classList.contains('open');
+                if (e.key === 'ArrowDown' && !open) {
+                    customSelect.classList.add('open');
+                    options.querySelectorAll('.custom-option')[1].focus();
+                    e.preventDefault();
+                }
+                if (e.key === 'Escape') {
+                    customSelect.classList.remove('open');
+                    trigger.focus();
+                }
+            });
+        })();
+
+        // Custom Select for Role
+        (function () {
+            const customSelect = document.getElementById('roleCustomSelect');
+            const trigger = document.getElementById('roleTrigger');
+            const options = document.getElementById('roleOptions');
+            const hiddenInput = document.getElementById('role');
+            const selectedText = document.getElementById('roleSelectedText');
+            const optionDivs = options.querySelectorAll('.custom-option');
+
+            // Open/close dropdown
+            trigger.addEventListener('click', function (e) {
+                customSelect.classList.toggle('open');
+            });
+
+            // Option click
+            optionDivs.forEach(option => {
+                option.addEventListener('click', function (e) {
+                    optionDivs.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    let val = this.getAttribute('data-value');
+                    let text = this.textContent;
+                    selectedText.textContent = text;
+                    hiddenInput.value = val;
+                    customSelect.classList.remove('open');
+                });
+                option.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+
+            // Close on outside click
+            document.addEventListener('mousedown', function (e) {
+                if (!customSelect.contains(e.target)) {
+                    customSelect.classList.remove('open');
+                }
+            });
+
+            // Keyboard navigation
+            customSelect.addEventListener('keydown', function (e) {
+                const open = customSelect.classList.contains('open');
+                if (e.key === 'ArrowDown' && !open) {
+                    customSelect.classList.add('open');
+                    options.querySelectorAll('.custom-option')[1].focus();
+                    e.preventDefault();
+                }
+                if (e.key === 'Escape') {
+                    customSelect.classList.remove('open');
+                    trigger.focus();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
