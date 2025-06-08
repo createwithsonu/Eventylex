@@ -21,30 +21,11 @@
 - 🧑‍💻 **Team Section** – Meet the developers behind Eventylex.
 - 📬 **Contact Form** – Reach out directly via a simple contact form.
 
----
-
-## Getting Started
-
-1. Open the Project
-Simply open index.html in any web browser.
-2. Navigate
-Use the navbar to explore features, register, or log in.
-
-## Technologies Used
-HTML5
-CSS3
-JavaScript (Vanilla)
-
-## Screenshots
-🔐 Login Page
-📝 Register Page
-🧠 Dashboard (Coming Soon)
-👥 Credits
-
 ## Credits
 👨‍💻 Sonu Patel – Front-End Developer
 🧠 Ashutosh Shakya – Backend Developer
 🎨 Alok Vikram – UI/UX Designer
+
 ## Images & Icons:
 All images/icons are original or used with appropriate permissions.
 
