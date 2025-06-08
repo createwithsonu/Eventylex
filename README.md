@@ -48,12 +48,12 @@ HTML5
 CSS3
 JavaScript (Vanilla)
 
-## 📸 Screenshots (Update file names after adding images)
+## Screenshots :
 🔐 Login Page
 📝 Register Page
 🧠 Dashboard (Coming Soon)
 👥 Credits
-## Developers:
+## Credits :
 👨‍💻 Sonu Patel – Front-End Developer
 🧠 Ashutosh Shakya – Backend Developer
 🎨 Alok Vikram – UI/UX Designer
