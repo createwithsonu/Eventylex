@@ -102,10 +102,11 @@
     }
 
     .cta-button {
+      display: inline-block;           /* Make anchor look like a button */
       margin-top: 40px;
       padding: 12px 28px;
       background-color: #d10000;
-      color: #fff;
+      color: #fff !important;
       border: none;
       font-family: 'Poppins', sans-serif;
       font-weight: bold;
@@ -113,6 +114,8 @@
       cursor: pointer;
       border-radius: 4px;
       transition: background 0.2s, transform 0.18s;
+      text-decoration: none;           /* Remove underline */
+      text-align: center;
     }
 
     .cta-button:hover {
@@ -453,7 +456,13 @@
       justify-items: center;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 600px) {
+      .developer-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1000px) {
       .developer-cards {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -472,7 +481,8 @@
       transition: transform 0.22s, box-shadow 0.22s, border-color 0.2s;
       width: 100%;
       max-width: 410px;
-      min-width: 270px;
+      min-width: 220px;
+      box-sizing: border-box;
     }
 
     @media (min-width: 700px) {
@@ -588,7 +598,7 @@
     </h1>
     <p>Your all-in-one platform for managing and participating in college events with ease. Track events, earn
       recognition, and never miss a beat.</p>
-    <button class="cta-button" onclick="window.location.href='login.html'">LOGIN</button>
+    <a href="pages/login.html" class="cta-button">LOGIN</a>
   </section>
 
   <section class="features" id="features-section">
