@@ -11,18 +11,6 @@
 
 ---
 
-## 📑 Table of Contents
-
-- [Live Site](#-live-site)
-- [Features](#-features)
-- [Getting Started](#-getting-started)
-- [Technologies Used](#-technologies-used)
-- [Screenshots](#-screenshots)
-- [Credits](#-credits)
-- [License](#-license)
-
----
-
 ## ✨ Features
 
 - 🔐 **User Registration & Login** – Secure and intuitive login/registration forms.
