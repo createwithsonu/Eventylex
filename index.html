@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventylex - College Event Management</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700&family=DM+Sans&family=Varela&family=Roboto&family=Poppins:wght@300;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #eee;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    header {
+      background-color: #000000;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #d10000;
+      position: relative;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 700;
+      color: #d10000;
+      font-size: 50px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+
+    }
+
+    nav a {
+      margin-left: 20px;
+      color: #ccc;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #d10000;
+    }
+
+    /* Hamburger menu styles */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      z-index: 20;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 4px;
+      width: 100%;
+      background: #d10000;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    .hero {
+      padding: 100px 40px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+    }
+
+    .hero h1 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: bold;
+      font-size: 60px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-family: 'Varela', sans-serif;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-button {
+      margin-top: 40px;
+      padding: 12px 28px;
+      background-color: #d10000;
+      color: #fff;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.18s;
+    }
+
+    .cta-button:hover {
+      background-color: #ff3333;
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 18px 0 rgba(209, 0, 0, 0.18);
+    }
+
+    .features,
+    .uce,
+    .uce-events {
+      padding: 60px 40px;
+      background-color: #111;
+      color: #eee;
+    }
+
+    .feature-cards,
+    .testimonial-cards,
+    .uce-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 700px) {
+
+      .feature-cards,
+      .testimonial-cards,
+      .uce-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-box,
+    .uce-box {
+      background: #1e1e1e;
+      padding: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .testimonial-box {
+      border-left: 4px solid #d10000;
+      background: #1e1e1e;
+      padding: 20px 20px 20px 32px;
+      /* Increased left padding */
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      border-radius: 6px;
+      margin-left: 0;
+    }
+
+    .uce-box {
+      border: 2px solid #d10000;
+    }
+
+    .section-heading {
+      font-family: 'Saira Condensed', sans-serif;
+      font-size: 50px;
+      color: #fff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9pt;
+      color: #777;
+    }
+
+    .uce-btn {
+      align-self: flex-start;
+      margin-top: 10px;
+      padding: 6px 16px;
+      background-color: #d10000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .uce-btn:hover {
+      background-color: #ffffff;
+    }
+
+    .feature-title {
+      color: #d10000;
+      font-size: 1.3em;
+      margin: 0 0 8px 0;
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-section {
+      padding: 60px 40px;
+      background-color: #111;
+      color: #eee;
+    }
+
+    .contact-box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #1e1e1e;
+      border: 2px solid #d10000;
+      border-radius: 8px;
+      padding: 32px 24px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-box form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-box label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+
+    .contact-box input,
+    .contact-box textarea {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      padding: 8px 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background: #222;
+      color: #eee;
+      outline: none;
+      resize: none;
+    }
+
+    .contact-box input:focus,
+    .contact-box textarea:focus {
+      border-color: #d10000;
+    }
+
+    .contact-btn {
+      margin-top: 10px;
+      padding: 10px 22px;
+      background-color: #d10000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover {
+      background-color: #a80000;
+    }
+
+    /* Responsive Nav */
+    @media (max-width: 800px) {
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #000000;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 200px;
+        padding: 20px 0 20px 20px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border-radius: 0 0 0 12px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-20px);
+        transition: all 0.3s;
+      }
+
+      nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      nav a {
+        margin: 12px 0;
+        font-size: 18px;
+        width: 100%;
+        padding: 8px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* Hamburger animation when open */
+    .menu-toggle.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+
+    /* Card Animation: Fade-in and slight up on load */
+    .feature-box,
+    .uce-box,
+    .testimonial-box {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardFadeIn 0.8s cubic-bezier(.4, 1.4, .7, 1) forwards;
+    }
+
+    .feature-box {
+      animation-delay: 0.1s;
+    }
+
+    .feature-box:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .feature-box:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .feature-box:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .feature-box:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .feature-box:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    .uce-box {
+      animation-delay: 0.1s;
+    }
+
+    .uce-box:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .uce-box:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .uce-box:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .uce-box:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    .testimonial-box {
+      animation-delay: 0.1s;
+    }
+
+    .testimonial-box:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .testimonial-box:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes cardFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card Hover Effects */
+    .feature-box,
+    .uce-box,
+    .testimonial-box {
+      transition:
+        transform 0.25s cubic-bezier(.4, 1.4, .7, 1),
+        box-shadow 0.25s cubic-bezier(.4, 1.4, .7, 1),
+        border-color 0.2s;
+    }
+
+    .feature-box:hover,
+    .uce-box:hover,
+    .testimonial-box:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 32px 0 rgba(209, 0, 0, 0.12), 0 1.5px 8px 0 rgba(0, 0, 0, 0.10);
+      border-color: #ff3333;
+    }
+
+    /* Extra: Button hover for UCE and Contact */
+    .uce-btn,
+    .contact-btn {
+      transition: background 0.2s, transform 0.18s;
+    }
+
+    .uce-btn:hover,
+    .contact-btn:hover {
+      background-color: #ff3333;
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    /* Developer Team Section */
+    .developer-team {
+      padding: 60px 40px;
+      background-color: #111;
+      color: #eee;
+    }
+
+    .developer-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      justify-items: center;
+    }
+
+    @media (min-width: 700px) {
+      .developer-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .developer-box {
+      background: #1e1e1e;
+      border: 2px solid #d10000;
+      border-radius: 8px;
+      padding: 32px 28px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 8px 32px 0 rgba(209, 0, 0, 0.10), 0 1.5px 8px 0 rgba(0, 0, 0, 0.10);
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.2s;
+      width: 100%;
+      max-width: 410px;
+      min-width: 270px;
+    }
+
+    @media (min-width: 700px) {
+      .developer-box {
+        max-width: 420px;
+        min-width: 320px;
+      }
+    }
+
+    .dev-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 5px;
+      /* Small radius for square look */
+      object-fit: cover;
+      margin-bottom: 8px;
+      background: #222;
+    }
+
+    .dev-name {
+      font-family: 'Saira Condensed', sans-serif;
+      font-size: 1.4em;
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 2px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .dev-role {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      color: #d10000;
+      margin-bottom: 6px;
+      text-align: center;
+      font-weight: bold;
+      /* Make role text bold */
+    }
+
+    .dev-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1em;
+      color: #ccc;
+      margin-bottom: 8px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .dev-btn {
+      padding: 8px 20px;
+      background-color: #d10000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.18s;
+      margin-top: 8px;
+    }
+
+    .dev-btn:hover {
+      background-color: #ff3333;
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      color: #d10000;
+      font-weight: bold;
+      font-size: 60px;
+      animation: blink 0.8s steps(1) infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Eventylex</div>
+    <nav id="navbar">
+      <a href="#about-section">ABOUT</a>
+      <a href="#features-section">FEATURES</a>
+      <a href="#uce-section">UCE</a>
+      <a href="#Developer-section">OUR TEAM</a>
+      <a href="#contact-section">CONTACTS</a>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle" aria-label="Open navigation" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <section class="hero" id="about-section">
+    <h1>
+      <span id="typing-text"></span>
+      <span class="typing-cursor">|</span>
+    </h1>
+    <p>Your all-in-one platform for managing and participating in college events with ease. Track events, earn
+      recognition, and never miss a beat.</p>
+    <button class="cta-button" onclick="window.location.href='login.html'">LOGIN</button>
+  </section>
+
+  <section class="features" id="features-section">
+    <h2 class="section-heading">Why Choose Eventylex ?</h2>
+    <div class="feature-cards">
+      <div class="feature-box">
+        <h2 class="feature-title">Event Creation & Management</h2>
+        <p>Easily create, edit, and manage college events with a user-friendly dashboard.</p>
+      </div>
+      <div class="feature-box">
+        <h2 class="feature-title">Real-Time Notifications</h2>
+        <p>Stay updated with instant alerts for event changes, reminders, and announcements.</p>
+      </div>
+      <div class="feature-box">
+        <h2 class="feature-title">Attendance Tracking</h2>
+        <p>Automate attendance with QR codes and track participation seamlessly.</p>
+      </div>
+      <div class="feature-box">
+        <h2 class="feature-title">Leaderboard & Recognition</h2>
+        <p>Motivate students with a dynamic leaderboard and reward active participants.</p>
+      </div>
+      <div class="feature-box">
+        <h2 class="feature-title">Lost & Found</h2>
+        <p>Report and recover lost items efficiently during events.</p>
+      </div>
+      <div class="feature-box">
+        <h2 class="feature-title">Feedback & Analytics</h2>
+        <p>Collect feedback and view analytics to improve future events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="uce-events" id="uce-section">
+    <h2 class="section-heading">Upcoming Events ( UCE )</h2>
+    <div class="uce-cards">
+      <div class="uce-box">
+        <p><strong>Annual Tech Fest 2025</strong></p>
+        <p>Showcase your skills in coding, robotics, and innovation. Join workshops and win exciting prizes!</p>
+        <button class="uce-btn">View More</button>
+      </div>
+      <div class="uce-box">
+        <p><strong>Sports Meet</strong></p>
+        <p>Participate in athletics, football, cricket, and more. Compete for your house and bring home the trophy!</p>
+        <button class="uce-btn">View More</button>
+      </div>
+      <div class="uce-box">
+        <p><strong>Cultural Night</strong></p>
+        <p>Enjoy music, dance, drama, and a vibrant display of college talent. Open to all students and faculty.</p>
+        <button class="uce-btn">View More</button>
+      </div>
+      <div class="uce-box">
+        <p><strong>Entrepreneurship Summit</strong></p>
+        <p>Network with industry leaders, attend startup workshops, and pitch your ideas to investors.</p>
+        <button class="uce-btn">View More</button>
+      </div>
+      <div class="uce-box">
+        <p><strong>Alumni Meet</strong></p>
+        <p>Reconnect with alumni, share experiences, and build lasting professional relationships.</p>
+        <button class="uce-btn">View More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="uce">
+    <h2 class="section-heading">Testimonials</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-box">
+        <p>"Eventylex has transformed how we manage events. Super smooth and efficient!"</p>
+        <p style="font-weight: bold; margin-top: 10px;">— Prof. Rahul Gupta (H.O.D)</p>
+      </div>
+      <div class="testimonial-box">
+        <p>"Our student engagement has skyrocketed. The leaderboard feature is a hit!"</p>
+        <p style="font-weight: bold; margin-top: 10px;">— Dr. Meena Joshi, Event Head</p>
+      </div>
+      <div class="testimonial-box">
+        <p>"Lost & Found and notifications make it so convenient for everyone involved."</p>
+        <p style="font-weight: bold; margin-top: 10px;">— Rishabh Tiwari, Student Council</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer Team Section -->
+  <section class="developer-team" id="Developer-section">
+    <h2 class="section-heading">Developer Team</h2>
+    <div class="developer-cards">
+      <div class="developer-box">
+        <img src="SonuPfp.jpg" alt="Dev 1" class="dev-img">
+        <div class="dev-name">SONU PATEL</div>
+        <div class="dev-role">Front-End Developer</div>
+        <div class="dev-desc">
+          Sonu specializes in building responsive and interactive user interfaces. He ensures the platform is fast,
+          accessible, and visually appealing for all users.
+        </div>
+        <button class="dev-btn">View More</button>
+      </div>
+      <div class="developer-box">
+        <img src="SonuPfp.jpg" alt="Dev 2" class="dev-img">
+        <div class="dev-name">ASHUTOSH SHAKYA</div>
+        <div class="dev-role">Backend Developer</div>
+        <div class="dev-desc">
+          Ashutosh manages the server-side logic, database integration, and API development. She focuses on security,
+          scalability, and robust performance.
+        </div>
+        <button class="dev-btn">View More</button>
+      </div>
+      <div class="developer-box">
+        <img src="SonuPfp.jpg" alt="Dev 3" class="dev-img">
+        <div class="dev-name">ALOK VIKRAM</div>
+        <div class="dev-role">UI/UX Designer</div>
+        <div class="dev-desc">
+          Alok crafts intuitive user experiences and modern designs. He works on wireframes, prototypes, and ensures the
+          app is easy and enjoyable to use.
+        </div>
+        <button class="dev-btn">View More</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact-section">
+    <h2 class="section-heading">Contact Us</h2>
+    <div class="contact-box">
+      <form>
+        <label for="name"><strong>Name</strong></label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email"><strong>Email</strong></label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="subject"><strong>Subject</strong></label>
+        <input type="text" id="subject" name="subject" required />
+
+        <label for="message"><strong>Message</strong></label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit" class="contact-btn"><strong>Send Message</strong></button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Eventylex. All rights reserved.
+  </footer>
+
+  <script>
+    // Responsive nav menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('navbar');
+
+    function toggleMenu() {
+      nav.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') toggleMenu();
+    });
+
+    // Optional: Close menu when clicking a link (for better UX)
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 800) {
+          nav.classList.remove('open');
+          menuToggle.classList.remove('open');
+        }
+      });
+    });
+
+    // Typing animation for hero section
+    const phrases = [
+      "[ Organize , Participate , Celebrate ]"
+    ];
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.querySelector('.typing-cursor');
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    function typePhrase() {
+      const phrase = phrases[phraseIndex];
+      if (typing) {
+        if (charIndex < phrase.length) {
+          typingText.textContent += phrase.charAt(charIndex);
+          charIndex++;
+          setTimeout(typePhrase, 70);
+        } else {
+          typing = false;
+          setTimeout(typePhrase, 1200);
+        }
+      } else {
+        if (charIndex > 0) {
+          typingText.textContent = phrase.substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(typePhrase, 30);
+        } else {
+          typing = true;
+          setTimeout(typePhrase, 400);
+        }
+      }
+    }
+
+    if (typingText) typePhrase();
+  </script>
+</body>
+
+</html>
