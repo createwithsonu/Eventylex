@@ -37,35 +37,31 @@
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/createwithsonu/eventylex.git
-
-2. Open the Project
+1. Open the Project
 Simply open index.html in any web browser.
 
-3. Navigate
+2. Navigate
 Use the navbar to explore features, register, or log in.
 
-🛠 Technologies Used
+## 🛠 Technologies Used
 HTML5
 CSS3
 JavaScript (Vanilla)
 
-📸 Screenshots (Update file names after adding images)
+## 📸 Screenshots (Update file names after adding images)
 🔐 Login Page
 📝 Register Page
 🧠 Dashboard (Coming Soon)
-
 👥 Credits
-Developers:
+## Developers:
 👨‍💻 Sonu Patel – Front-End Developer
 🧠 Ashutosh Shakya – Backend Developer
 🎨 Alok Vikram – UI/UX Designer
-Images & Icons:
+## Images & Icons:
 All images/icons are original or used with appropriate permissions.
 
-📄 License
+## 📄 License
 This project is intended for educational purposes only.
 Feel free to fork, explore, and learn from it! 💡
-💌 Contributions, feedback, and suggestions are always welcome!
+
+## 💌 Contributions, feedback, and suggestions are always welcome!
